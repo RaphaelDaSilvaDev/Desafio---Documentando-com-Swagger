@@ -1,0 +1,89 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio documentando com swagger",
+    "description": "Criando uma documentação utilizando o swagger",
+    "version": "1.0.0."
+  },
+  "paths": {
+    "/": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create an User",
+        "description": "Create an new User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "swagget documentation",
+                  "email": "swagger@documentation.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Operação realizada com sucesso"
+          },
+          "400": {
+            "description": "Email já está sendo utilizado"
+          }
+        }
+      },
+      "get": {
+        "tags": ["User"],
+        "summary": "List all users",
+        "description": "List all existent user",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          },
+          "400": {
+            "description": "Usuário sem permissão ou Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/:user_id": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Show user profile",
+        "description": "Show user profile",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          },
+          "400": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      }
+    },
+    "/:user_id/admin": {
+      "patch": {
+        "tags": ["User"],
+        "summary": "Turn user admin",
+        "description": "Turn user admin",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso"
+          },
+          "400": {
+            "description": "Usuário não encontrado"
+          }
+        }
+      }
+    }
+  }
+}
